@@ -3,8 +3,8 @@
 Tool parts that I chose: Part 2 (Selenium WebDriver in Java) and Part 4 (Cypress)
 
 ## Part 0
-- Step 0.1, Chrome version: 156.0.8078.80 (Official Build) (arm64)
-- Step 0.3, ChromeDriver version: ChromeDriver 156.0.8078.80
+- Step 0.1, Chrome version: 158.0.8127.37 (Official Build) (arm64)
+- Step 0.3, ChromeDriver version: ChromeDriver 158.0.8127.37
 - Step 0.4, locator of Pizza, Please!: `button[name="pizza-please"]`
 - Step 0.4, locator of Excluded tools: `select` (CSS), or `//label[normalize-space()='Excluded tools']/preceding-sibling::select` (XPath) — check in the Console that it finds exactly 1
 - Step 0.4, locator of Must be vegetarian: `#default-checkbox`
@@ -37,10 +37,12 @@ Tool parts that I chose: Part 2 (Selenium WebDriver in Java) and Part 4 (Cypress
 - Step 4.8, run 2, result, duration and pizza name: all passed (2 tests, 0 failing); pizza-scenario.cy.js 00:10, web-form.cy.js 00:02; Lab Pizza 20261124-134744 (tool=Pizza cutter, ingredients_number=6) 
 
 ## Part B
-1.
-2.
-3.
-4.
-5.
-6.
-7.
+1. The three number boxes share the id `floating_filled` (the Console found 3), so the id cannot pick one box. The tests use the unique label text and take the input next to it. A unique id such as `max-calories-per-slice` would give a shorter and more stable locator.
+2. Step 7 is a consistency oracle, because it checks that the recommendation and the admin list show the same tool. It would catch a server that saves a different tool from the one it shows. Step 4.6 in Cypress adds the same kind of check between the page and the API response.
+3. The page does not show whether the pizza is vegetarian. I would check the API response instead: `expect(response.body.vegetarian).to.be.true`. A check on the page would need it to show the ingredients or a "Vegetarian" line.
+4. Selenium needed an explicit wait for every late element, while Cypress waited by itself. Cypress was faster to write and to run (about 8 s against 10 to 17 s), and it needed no ChromeDriver, which broke when Chrome updated to 158. Cypress also gave a clearer report with a video and screenshots, but it crashed when both specs ran together in Chrome 158.
+5. I would choose Cypress for Project 2. It waits for elements by itself, so the tests need less code. It also records a video and screenshots as evidence with almost no extra code.
+6. In QP01Test I would edit the XPath inside the test, and in every test that copies it. In QP01PageObjectTest the test does not change. I only change `MAX_CALORIES` in HomePage, one line in one place.
+7. A cookie keeps the browser on one QuickPizza server, and only that server's admin list has the new pizza. Cypress clears cookies before each test, so a separate test for steps 6 and 7 might not find the pizza. That test also could not use `pizzaName` or `@tool` from the first test.
+
+# Note: Chrome was 156.0.8078.80 when I started, so I first downloaded ChromeDriver 156.0.8078.80.Chrome then updated itself to 158
