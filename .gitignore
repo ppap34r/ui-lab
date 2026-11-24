@@ -1,0 +1,15 @@
+# libraries and build output of the tools
+target/
+.venv/
+
+# Node.js
+node_modules/
+__pycache__/
+
+# Cypress
+cypress/cypress/downloads/
+
+# files that macOS and the editors add
+.DS_Store
+.idea/
+.vscode/
