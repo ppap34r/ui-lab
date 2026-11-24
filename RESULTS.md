@@ -35,7 +35,6 @@ Tool parts that I chose: Part 2 (Selenium WebDriver in Java) and Part 4 (Cypress
 - Step 4.7, the line of the admin list that shows your pizza: Lab Pizza 20261124-133910 (tool=Pizza cutter, ingredients_number=6)
 - Step 4.8, run 1, result, duration and pizza name: all passed (2 tests, 0 failing); pizza-scenario.cy.js 00:11, web-form.cy.js 00:03; Lab Pizza 20261124-134533 (tool=Scissors, ingredients_number=8)
 - Step 4.8, run 2, result, duration and pizza name: all passed (2 tests, 0 failing); pizza-scenario.cy.js 00:10, web-form.cy.js 00:02; Lab Pizza 20261124-134744 (tool=Pizza cutter, ingredients_number=6) 
-- Step 4.9 (optional), browser and result:
 
 ## Part B
 1.
